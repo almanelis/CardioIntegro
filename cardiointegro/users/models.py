@@ -3,4 +3,5 @@ from django.db import models
 
 
 class CIUser(AbstractUser):
-    is_doctor = models.BooleanField('Врач', blank=True, null=True)
+    is_doctor = models.BooleanField('Вы медицинский работник?', blank=True, null=False)
+    email = models.EmailField('Адрес электронной почты', blank=True, null=True)
