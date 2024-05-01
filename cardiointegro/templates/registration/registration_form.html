@@ -2,7 +2,8 @@
 
 {% block content %}
 <h1>Регистрация пользователя</h1>
-    <form action="post">
+    <form method="post">
+        {% csrf_token %}
         {{ form }}
         <input type="submit">
     </form>

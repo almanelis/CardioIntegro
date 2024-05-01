@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>
+      У вашего аккаунта нет доступа к этой странице.
+      Чтобы продолжить, войдите в систему с аккаунтом,
+      у которого есть доступ.
+    </p>
+  {% else %}
+    <p>
+      Пожалуйста, войдите в систему,
+      чтобы просматривать эту страницу.
+    </p>
+  {% endif %}
+{% endif %}
+<h1>Войти в систему</h1>
+<form action="{% url 'login' %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="hidden" name="next" id="{{ next }}">
+  <input type="submit" value="login">
+</form>
+<p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+{% endblock %}
