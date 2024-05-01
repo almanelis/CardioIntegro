@@ -1,0 +1,16 @@
+<header class="container mx-auto my-6 flex items-center justify-between">
+    <div>
+        <a href="#"><p class="text-3xl font-medium"><span class="text-red-600">Cardio</span><span>Integro</span></p></a>
+    </div>
+    <div class="flex gap-16">
+        <a href="#" class="text-xl font-medium hover:opacity-60">Мои пациенты</a>
+        <a href="#" class="text-xl font-medium hover:opacity-60">База знаний</a>
+        <a href="#" class="text-xl font-medium hover:opacity-60">О нас</a>
+    </div>
+    <div class="flex gap-7">
+        <button class="text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">Войти</button>
+        <button class="text-xl text-blue-500 hover:underline">
+            <a href="{% url 'signup' %}">Зарегистрироваться</a>
+        </button>
+    </div>
+</header>
