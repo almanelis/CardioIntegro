@@ -37,14 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    # Приложения для фронденда
     'tailwind',
     'theme',
     'crispy_forms',
     'crispy_tailwind',
-
+    # Приложения для обновления страниц
     "django_browser_reload",
-    # Приложения
+    # Основные приложения
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
 ]
