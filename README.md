@@ -32,7 +32,7 @@ python manage.py migrate
 ```
 3. Создаём суперюзера
 ```
-python med_it_forum/manage.py createsuperuser
+python manage.py createsuperuser
 ```
 4. Запускаем приложение
 ```
