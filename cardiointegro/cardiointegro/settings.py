@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Приложения для фронденда
+    # Приложения для фронденда
     'tailwind',
     'theme',
+    'crispy_forms',
+    'crispy_tailwind',
+    # Приложения для обновления страниц
     'crispy_forms',
     'crispy_tailwind',
     # Приложения для обновления страниц
@@ -88,6 +92,9 @@ TAILWIND_APP_NAME = 'theme'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = "tailwind"
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
+
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -109,6 +116,15 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'users.CIUser'
+# Перенаправление пользователя после входа
+LOGIN_REDIRECT_URL = '/' 
+LOGIN_URL = 'login' 
+LOGOUT_REDIRECT_URL = '/'
+# Бэкенд filebased.EmailBackend:
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# Директория, в которую будут сохраняться файлы писем:
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails' 
 AUTH_USER_MODEL = 'users.CIUser'
 # Перенаправление пользователя после входа
 LOGIN_REDIRECT_URL = '/' 
@@ -141,6 +157,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
+LANGUAGE_CODE = 'Ru-rus'
 LANGUAGE_CODE = 'Ru-rus'
 
 TIME_ZONE = 'UTC'

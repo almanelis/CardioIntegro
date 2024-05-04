@@ -15,6 +15,7 @@ urlpatterns = [
     # Приложение админки
     path('admin/', admin.site.urls),
     # Автоматическое обновление страниц для фронтенда
+    # Автоматическое обновление страниц для фронтенда
     path("__reload__/", include("django_browser_reload.urls")),
 ]
 
