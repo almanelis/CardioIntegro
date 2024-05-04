@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+{% block content %}
+форма анализа
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Отправить" class="mx-auto bg-blue-500 text-white text-lg rounded-lg px-8 py-1.5 hover:opacity-60">
+      </form>
+
+{% endblock content %}

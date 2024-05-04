@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}CardioIntegro{% endblock title %}
+{% block content %}
+  <div class="flex flex-col gap-3">
+    <p class="text-2xl font-semibold">Мои пациенты</p>
+    <p class>В данном разделе вы можете загрузить файлы ЭКГ своего пациента для анализа<br>
+      А также вы можете просмотреть индивидуальную историю анализов и отчётов по ним.</p>
+  </div>
+  <div class="flex gap-3 my-16">
+    <input type="search" class="rounded-lg border border-gray-200 w-1/5" placeholder="ФИО пациента">
+    <button class="text-xl text-white bg-blue-500 px-6 py-1.5 rounded-lg hover:opacity-80">Поиск</button>
+  </div>
+  <a href="{% url 'analyse:create' %}" class="text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">Проанализировать ЭКГ</a>
+  <div class="mt-4">
+    <div>
+      <!-- Заголовок таблицы -->
+      <div class="bg-gray-200 rounded-t-lg">
+        <table class="w-full">
+          <thead>
+            <th class="text-start text-xl font-semibold pl-2 py-3">ФИО пациента</th>
+            <th class="text-start text-xl font-semibold py-3">Время отправки</th>
+            <th class="text-start text-xl font-semibold py-3">Состояние</th>
+          </thead>
+        </table>
+      </div>
+      <!-- Тело таблицы -->
+      <div class="border border-gray-200 rounded-b-lg">
+        <table class="w-full">
+          <tbody>
+            {% for analyse in user_analyse %}
+              {% include 'includes/analyse_table_element.html' %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- конец тела таблицы -->
+  </div>
+  <!-- конец таблицы -->
+{% endblock content %}

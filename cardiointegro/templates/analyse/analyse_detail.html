@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+детали по отчёту
+<div>
+    {{ object.title }}{{ object.id }}{{ object.created_at }}
+</div>
+<img src="{{ object.plot1.url }}" alt="">
+<img src="{{ object.plot2.url }}" alt="">
+<img src="{{ object.plot3.url }}" alt="">
+
+{% endblock content %}

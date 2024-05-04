@@ -37,12 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Приложения для фронденда
     'tailwind',
     'theme',
+    'crispy_forms',
+    'crispy_tailwind',
+    # Приложения для обновления страниц
     "django_browser_reload",
-    # Приложения
-    'main.apps.MainConfig',
-    'user.apps.UserConfig',
+    # Основные приложения
+    'landing.apps.LandingConfig',
+    'analyse.apps.AnalyseConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +62,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cardiointegro.urls'
+
+MEDIA_URL = 'files/'
+MEDIA_ROOT = BASE_DIR / 'files'
 
 TEMPLATES_DIR = BASE_DIR / 'templates'
 
@@ -77,6 +85,9 @@ TEMPLATES = [
 ]
 
 TAILWIND_APP_NAME = 'theme'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
+
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -98,6 +109,15 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'users.CIUser'
+# Перенаправление пользователя после входа
+LOGIN_REDIRECT_URL = '/' 
+LOGIN_URL = 'login' 
+LOGOUT_REDIRECT_URL = '/'
+# Бэкенд filebased.EmailBackend:
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# Директория, в которую будут сохраняться файлы писем:
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails' 
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -121,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'Ru-rus'
 
 TIME_ZONE = 'UTC'
 
@@ -134,8 +154,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
-AUTH_USER_MODEL = 'user.User'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

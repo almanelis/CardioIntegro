@@ -9,14 +9,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>
-        {% block title %}{% endblock %}
+        {% block title %}{% endblock %} - CardioIntegro
     </title>
     <title>Document</title>
     {% tailwind_css %}
-</head>
+    </head>
 {% include "includes/header.html" %}
 <body class="font-raleway container mx-auto">
-    {% block content %}{% endblock %}
+    <main class="container mx-auto my-16">
+        {% block content %}{% endblock %}
+    </main>
 </body>
+{% include "includes/footer.html" %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </html>
