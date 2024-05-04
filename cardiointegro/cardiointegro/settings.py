@@ -38,12 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Приложения для фронденда
-    # Приложения для фронденда
     'tailwind',
     'theme',
-    'crispy_forms',
-    'crispy_tailwind',
-    # Приложения для обновления страниц
     'crispy_forms',
     'crispy_tailwind',
     # Приложения для обновления страниц

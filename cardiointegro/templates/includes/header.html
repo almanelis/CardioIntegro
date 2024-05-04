@@ -27,14 +27,6 @@
            <a href="{% url 'login' %}" class="text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">Войти</a>
            <a class="text-xl text-blue-500 hover:underline" href="{% url 'users:registration' %}">Зарегистрироваться</a> 
         </div>
-        
-        {% endif %}
-        {% else %}
-        <div class="flex items-center gap-3">
-           <a href="{% url 'login' %}" class="text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">Войти</a>
-           <a class="text-xl text-blue-500 hover:underline" href="{% url 'users:registration' %}">Зарегистрироваться</a> 
-        </div>
-        
         {% endif %}
     </div>
 </header>
