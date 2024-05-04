@@ -1,17 +1,15 @@
 <header class="container mx-auto my-6 flex items-center justify-between">
     <div>
-        <a href="{% url 'main:index' %}"><p class="text-3xl font-medium"><span class="text-red-600">Cardio</span><span>Integro</span></p></a>
+        <a href="{% url 'landing:main_page' %}"><p class="text-3xl font-medium"><span class="text-red-600">Cardio</span><span>Integro</span></p></a>
     </div>
     <div class="flex gap-16">
-        <a href="#" class="text-xl font-medium hover:opacity-60">Мои пациенты</a>
-        <a href="#" class="text-xl font-medium hover:opacity-60">База знаний</a>
-        <a href="#" class="text-xl font-medium hover:opacity-60">О нас</a>
+        <a href="{% url 'analyse:list' %}" class="text-xl font-medium hover:opacity-60">Мои пациенты</a>
+        <a href="{% url 'landing:tutorial' %}" class="text-xl font-medium hover:opacity-60">База знаний</a>
+        <a href="{% url 'landing:main_page' %}" class="text-xl font-medium hover:opacity-60">О нас</a>
     </div>
     <div class="flex gap-7">
         {% if user.is_authenticated %}
-        <button class="text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">
-            <a href="">Проанализировать ЭКГ</a>
-        </button>
+        <a href="{% url 'analyse:create' %}" class="text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">Проанализировать ЭКГ</a>
         <button class="flex items-center gap-4 rounded-full px-1.5 focus:ring-4 focus:ring-gray-100" data-dropdown-toggle="dropdownName">
             <p class="text-xl font-medium hover:text-blue-500">{{ user.username }}</p>
             <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,6 +22,13 @@
                 <p class="text-start text-lg text-red-600 font-medium p-3 rounded-b-lg hover:bg-blue-100"><a href="{% url 'users:logout' %}">Выйти</a></p>
             </div>
         </button>
+        {% else %}
+        <div class="flex items-center gap-3">
+           <a href="{% url 'login' %}" class="text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">Войти</a>
+           <a class="text-xl text-blue-500 hover:underline" href="{% url 'users:registration' %}">Зарегистрироваться</a> 
+        </div>
+        
+        {% endif %}
         {% else %}
         <div class="flex items-center gap-3">
            <a href="{% url 'login' %}" class="text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">Войти</a>
