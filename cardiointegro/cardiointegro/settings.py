@@ -114,22 +114,13 @@ DATABASES = {
 
 AUTH_USER_MODEL = 'users.CIUser'
 # Перенаправление пользователя после входа
-LOGIN_REDIRECT_URL = '/' 
-LOGIN_URL = 'login' 
+LOGIN_REDIRECT_URL = 'analyse:list'
+LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = '/'
 # Бэкенд filebased.EmailBackend:
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 # Директория, в которую будут сохраняться файлы писем:
-EMAIL_FILE_PATH = BASE_DIR / 'sent_emails' 
-AUTH_USER_MODEL = 'users.CIUser'
-# Перенаправление пользователя после входа
-LOGIN_REDIRECT_URL = '/' 
-LOGIN_URL = 'login' 
-LOGOUT_REDIRECT_URL = '/'
-# Бэкенд filebased.EmailBackend:
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-# Директория, в которую будут сохраняться файлы писем:
-EMAIL_FILE_PATH = BASE_DIR / 'sent_emails' 
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
 
@@ -7,4 +6,4 @@ class MainPageTemplateView(TemplateView):
 
 
 class TutorialTemplateView(TemplateView):
-    template_name = 'landing/tutorial.html'
+    template_name = 'landing/knowledgebase.html'

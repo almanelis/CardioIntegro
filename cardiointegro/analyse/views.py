@@ -1,18 +1,14 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 from .models import ECGAnalyse
 from .utils import ecg_analyse_process
 from .forms import ECGAnalyseForm
 
 
-# Класс для вывода главной страницы
-# class MainPageView(TemplateView):
-#     template_name = 'main/index.html'
-
-
+@login_required
 def analyse_create_view(request):
     """Функция загрузки и анализ ЭКГ"""
     if request.method == 'POST':
@@ -37,6 +33,7 @@ def analyse_create_view(request):
     return render(request, 'analyse/analyse_form.html', {'form': form})
 
 
+@login_required
 def analyse_list_view(request):
     user = request.user
     user_analyse = ECGAnalyse.objects.filter(doctor=user)

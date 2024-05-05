@@ -5,8 +5,9 @@ from django.conf.urls.static import static
 from . import settings
 
 urlpatterns = [
+    # Лендинги
     path('', include('landing.urls'), name='landing'),
-    # Основное приложение
+    # Приложение для анализа ЭКГ
     path('analyse/', include('analyse.urls'), name='analyse'),
     # Приложение пользователя
     path('users/', include('users.urls')),
@@ -20,4 +21,5 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
