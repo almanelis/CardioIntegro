@@ -7,3 +7,7 @@ class MainPageTemplateView(TemplateView):
 
 class TutorialTemplateView(TemplateView):
     template_name = 'landing/knowledgebase.html'
+
+
+class FrontendTemplateView(TemplateView):
+    template_name = 'landing/frontend.html'
