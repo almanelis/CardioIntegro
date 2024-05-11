@@ -1,3 +1,5 @@
+{% load static %}
+
 <button data-drawer-target="cta-button-sidebar" data-drawer-toggle="cta-button-sidebar" aria-controls="cta-button-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
   <span class="sr-only">Открыть меню</span>
   <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -11,14 +13,15 @@
   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50">
     <ul class="space-y-2 font-medium">
       <li>
-        <a href="{% url 'landing:main_page' %}">
+        <a href="{% url 'landing:main_page' %}" class="flex items-center">
+          <img src="{% static 'img/heart.ico' %}" alt="logo">
           <p class="text-3xl font-medium p-2"><span class="text-red-600">Cardio</span><span>Integro</span></p>
         </a>
       </li>
       <li>
         <a href="{% url 'analyse:create' %}"
-          class="flex items-center p-2 text-gray-900 rounded-lg bg-blue-300 hover:opacity-90 group">
-          <svg class="flex-shrink-0 w-[26px] h-[26px] text-gray-500 transition duration-75 group-hover:text-gray-900"
+          class="flex items-center p-2 text-white rounded-lg bg-blue-500 hover:opacity-90 group">
+          <svg class="flex-shrink-0 w-[26px] h-[26px] text-white transition duration-75 group-hover:text-white"
             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
             viewBox="0 0 24 24">
             <path fill-rule="evenodd"
@@ -79,7 +82,7 @@
           соглашением</a>.
       </p>
     </div>
-    <ul class="space-y-2 font-medium absolute bottom-3 px-3 py-4 overflow-y-auto bg-gray-50">
+    <ul class="space-y-2 font-medium absolute bottom-3 px-3 py-4 overflow-y-auto bg-gray-50 w-60">
       {% if user.is_authenticated %}
       <li>
         <div class="flex items-center p-2 text-gray-900 rounded-lg group">
@@ -89,12 +92,12 @@
               d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z"
               clip-rule="evenodd" />
           </svg>
-          <span class="flex-1 ms-3 whitespace-nowrap">Пользователь: {{ user.username }}</span>
+          <span class="flex-1 ms-3 whitespace-nowrap">{{ user.username }}</span>
         </div>
       </li>
       <li>
         <button type="button"
-          class="flex items-center p-2 w-full text-base text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+          class="flex items-center p-2 w-full text-base text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100"
           aria-controls="dropdown-authentication" data-collapse-toggle="dropdown-authentication">
           <svg class="w-[26px] h-[26px] text-gray-500 transition duration-75 group-hover:text-gray-900"
             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"

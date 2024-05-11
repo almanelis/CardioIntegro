@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Поиск среди анализов ЭКГ{% endblock title %}
+
+{% block content %}
+
+<form method="GET" action="{% url 'analyse:search' %}"> 
+    <input type="text" name="query" placeholder="Поиск..." value="{{ query }}">
+    <button type="submit">Найти</button>
+  </form>
+  
+  {% if search_list %}
+    <ul>
+    {% for analyse in search_list %}
+      <li>{{ analyse.title }}</li> 
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>Ничего не найдено.</p>
+  {% endif %}
+  
+
+{% endblock content %}

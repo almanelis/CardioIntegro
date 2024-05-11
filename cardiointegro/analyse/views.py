@@ -39,8 +39,12 @@ def analyse_create_view(request):
 
 @login_required
 def analyse_list_view(request):
+    """Функция для получения списка ЭКГ"""
     user = request.user
-    user_analyse = ECGAnalyse.objects.filter(doctor=user).order_by('-created_at')
+    user_analyse = (ECGAnalyse.objects
+                    .filter(doctor=user)
+                    .order_by('-created_at')
+                    )
 
     # Пагинация
     paginator = Paginator(user_analyse, 5)
@@ -55,11 +59,23 @@ def analyse_list_view(request):
 
 
 class AnalyseDetailView(LoginRequiredMixin, DetailView):
+    """Класс для получения отчёта с деталями по анализи ЭКГ"""
     model = ECGAnalyse
     template_name = 'analyse/analyse_detail.html'
 
 
 @login_required
-def analyse_search(request):
+def analyse_search_view(request):
+    """Функция для поиска среди пользовательских анализов ЭКГ"""
     user = request.user
-    search_analyse = ECGAnalyse.objects.filter(doctor=user, title__icontains=str(request))
+    # Получаем пользовательскиз запрос. По умолчанию пустая строка
+    query = request.GET.get('query', '')
+    search_list = ECGAnalyse.objects.filter(doctor=user,
+                                            title__icontains=query)
+
+    context = {
+        'search_list': search_list,
+        'query': query,
+    }
+    template = 'analyse/search_list.html'
+    return render(request, template, context)
