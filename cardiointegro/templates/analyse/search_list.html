@@ -3,21 +3,40 @@
 {% block title %}Поиск среди анализов ЭКГ{% endblock title %}
 
 {% block content %}
-
-<form method="GET" action="{% url 'analyse:search' %}"> 
-    <input type="text" name="query" placeholder="Поиск..." value="{{ query }}">
-    <button type="submit">Найти</button>
-  </form>
+<p class="text-2xl font-semibold">Поиск среди пацинтов</p>
+<form method="GET" action="{% url 'analyse:search' %}" class="flex gap-3 my-16"> 
+  <input type="text" name="query" placeholder="ФИО пациента" value="{{ query }}" class="rounded-lg border border-gray-200 w-1/5">
+  <button type="submit" class="text-xl text-white bg-blue-500 px-6 py-1.5 rounded-lg hover:opacity-80">Поиск</button>
+</form>
   
   {% if search_list %}
-    <ul>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-6">
+    <table class="w-full text-left rtl:text-right text-gray-500">
+      <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            ФИО пациента
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Дата анализа
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Состояние
+          </th>
+          <th scope="col" class="px-6 py-3">
+            <span class="sr-only">Отчёты</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
     {% for analyse in search_list %}
-      <li>{{ analyse.title }}</li> 
+      {% include 'includes/analyse_table_element.html' %}
     {% endfor %}
     </ul>
   {% else %}
     <p>Ничего не найдено.</p>
   {% endif %}
-  
-
+</tbody>
+</table>
+</div>
 {% endblock content %}

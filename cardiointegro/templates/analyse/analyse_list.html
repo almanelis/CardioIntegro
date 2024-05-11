@@ -6,10 +6,10 @@
   <p class>В данном разделе вы можете загрузить файлы ЭКГ своего пациента для анализа<br>
     А также вы можете просмотреть индивидуальную историю анализов и отчётов по ним.</p>
 </div>
-<div class="flex gap-3 my-16">
-  <input type="search" class="rounded-lg border border-gray-200 w-1/5" placeholder="ФИО пациента">
-  <button class="text-xl text-white bg-blue-500 px-6 py-1.5 rounded-lg hover:opacity-80">Поиск</button>
-</div>
+<form method="GET" action="{% url 'analyse:search' %}" class="flex gap-3 my-16"> 
+  <input type="text" name="query" placeholder="ФИО пациента" value="{{ query }}" class="rounded-lg border border-gray-200 w-1/5">
+  <button type="submit" class="text-xl text-white bg-blue-500 px-6 py-1.5 rounded-lg hover:opacity-80">Поиск</button>
+</form>
 <a href="{% url 'analyse:create' %}"
   class="text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">Проанализировать ЭКГ</a>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-6">
