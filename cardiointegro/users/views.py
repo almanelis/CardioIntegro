@@ -9,7 +9,7 @@ from .forms import RegisterForm
 # Фукция входа пользователя(django>=3.0)
 def logout_view(request):
     logout(request)
-    return redirect('/')
+    return redirect(reverse_lazy('login'))
 
 
 # Класс создания нового пользователя

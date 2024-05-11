@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 from .models import ECGAnalyse
 from .utils import ecg_analyse_process
@@ -27,7 +29,9 @@ def analyse_create_view(request):
             ecg_analyse.save()
             # Перенаправление на главную страницу
             # return HttpResponseRedirect('analyse/list/')
-            return redirect('/analyse/list')
+            target_url = reverse('analyse:detail',
+                                 kwargs={'pk': ecg_analyse.id})
+            return redirect(target_url)
     else:
         form = ECGAnalyseForm()
     return render(request, 'analyse/analyse_form.html', {'form': form})
@@ -35,15 +39,43 @@ def analyse_create_view(request):
 
 @login_required
 def analyse_list_view(request):
+    """Функция для получения списка ЭКГ"""
     user = request.user
-    user_analyse = ECGAnalyse.objects.filter(doctor=user)
+    user_analyse = (ECGAnalyse.objects
+                    .filter(doctor=user)
+                    .order_by('-created_at')
+                    )
+
+    # Пагинация
+    paginator = Paginator(user_analyse, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'user_analyse': user_analyse,
+        'page_obj': page_obj,
     }
     template = 'analyse/analyse_list.html'
     return render(request, template, context)
 
 
 class AnalyseDetailView(LoginRequiredMixin, DetailView):
+    """Класс для получения отчёта с деталями по анализи ЭКГ"""
     model = ECGAnalyse
     template_name = 'analyse/analyse_detail.html'
+
+
+@login_required
+def analyse_search_view(request):
+    """Функция для поиска среди пользовательских анализов ЭКГ"""
+    user = request.user
+    # Получаем пользовательскиз запрос. По умолчанию пустая строка
+    query = request.GET.get('query', '')
+    search_list = ECGAnalyse.objects.filter(doctor=user,
+                                            title__icontains=query)
+
+    context = {
+        'search_list': search_list,
+        'query': query,
+    }
+    template = 'analyse/search_list.html'
+    return render(request, template, context)

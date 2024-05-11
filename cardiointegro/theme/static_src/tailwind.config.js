@@ -24,7 +24,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                'raleway': ['Raleway', "sans-serif"],
+                'open-sans': ['Open Sans', 'sans-serif']
             },
         },
     },

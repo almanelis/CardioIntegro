@@ -116,7 +116,7 @@ AUTH_USER_MODEL = 'users.CIUser'
 # Перенаправление пользователя после входа
 LOGIN_REDIRECT_URL = 'analyse:list'
 LOGIN_URL = 'login'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'login'
 # Бэкенд filebased.EmailBackend:
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 # Директория, в которую будут сохраняться файлы писем:
@@ -158,7 +158,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

@@ -4,11 +4,25 @@
 {% block title %}Добавление анализа{% endblock title %}
 
 {% block content %}
-форма анализа
-      <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="Отправить" class="mx-auto bg-blue-500 text-white text-lg rounded-lg px-8 py-1.5 hover:opacity-60">
-      </form>
+<div class="flex flex-col mb-6">
+  <p class="text-2xl font-semibold mb-3">Анализ ЭКГ</p>
+  <p class>На этой странице вы можете прикрепить запись ЭКГ вашего пациента для анализа:</p>
+      <ul class="list-disc list-inside">
+    <li>c целью систематизированного отслеживания индивидуального состояния нормы пациента</li>
+    <li>с целью выявления ранних признаков развития заболевания</li>
+  </ul>
+</div>
+<div class="min-w-xs max-w-xl">
+  <form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="font-semibold">
+    {{ form|crispy }}
+  </div>
+  
+  <input type="submit" value="Отправить"
+    class="mx-auto bg-blue-500 text-white text-lg rounded-lg px-8 py-1.5 hover:opacity-60">
+</form>
+</div>
+
 
 {% endblock content %}
