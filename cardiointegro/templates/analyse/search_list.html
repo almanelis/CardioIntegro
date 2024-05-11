@@ -3,9 +3,9 @@
 {% block title %}Поиск среди анализов ЭКГ{% endblock title %}
 
 {% block content %}
-<p class="text-2xl font-semibold">Поиск среди пацинтов</p>
+<p class="text-2xl font-semibold">Поиск среди пациентов</p>
 <form method="GET" action="{% url 'analyse:search' %}" class="flex gap-3 my-16"> 
-  <input type="text" name="query" placeholder="ФИО пациента" value="{{ query }}" class="rounded-lg border border-gray-200 w-1/5">
+  <input type="text" name="query" placeholder="ФИО пациента" value="{{ query }}" class="rounded-lg border border-gray-200 w-80">
   <button type="submit" class="text-xl text-white bg-blue-500 px-6 py-1.5 rounded-lg hover:opacity-80">Поиск</button>
 </form>
   

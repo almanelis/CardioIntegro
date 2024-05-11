@@ -116,7 +116,7 @@ AUTH_USER_MODEL = 'users.CIUser'
 # Перенаправление пользователя после входа
 LOGIN_REDIRECT_URL = 'analyse:list'
 LOGIN_URL = 'login'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'login'
 # Бэкенд filebased.EmailBackend:
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 # Директория, в которую будут сохраняться файлы писем:

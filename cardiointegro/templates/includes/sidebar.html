@@ -1,30 +1,49 @@
 {% load static %}
 
-<button data-drawer-target="cta-button-sidebar" data-drawer-toggle="cta-button-sidebar" aria-controls="cta-button-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
-  <span class="sr-only">Открыть меню</span>
-  <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-  <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-  </svg>
-</button>
-
-
-<aside id="cta-button-sidebar"
-  class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
-  aria-label="Sidebar">
-  <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50">
-    <ul class="space-y-2 font-medium">
-      <li>
+<nav class="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
+  <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <div class="flex flex-wrap items-center justify-between">
+      <div class="flex items-center justify-start rtl:justify-end gap-1.5">
+        <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
+          type="button"
+          class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+          <span class="sr-only">Открыть меню</span>
+          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd" fill-rule="evenodd"
+              d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+            </path>
+          </svg>
+        </button>
         <a href="{% url 'landing:main_page' %}" class="flex items-center">
           <img src="{% static 'img/heart.ico' %}" alt="logo">
-          <p class="text-3xl font-medium p-2"><span class="text-red-600">Cardio</span><span>Integro</span></p>
+          <p class="text-3xl font-medium"><span class="text-red-600">Cardio</span><span
+              class="text-gray-900">Integro</span></p>
         </a>
-      </li>
+      </div>
+      <div class="mx-auto">
+        <p class="text-lg font-semibold text-gray-900">Личный кабинет врача</p>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<aside id="logo-sidebar"
+  class="fixed top-0 left-0 z-40 w-64 bg-white h-screen pt-20 transition-transform -translate-x-full border-r border-gray-200 sm:translate-x-0 "
+  aria-label="Sidebar">
+  <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
+    {% with request.resolver_match.view_name as view_name %}
+    <ul class="space-y-2 font-medium mt-6 sm:mt-0">
       <li>
-        <a href="{% url 'analyse:create' %}"
-          class="flex items-center p-2 text-white rounded-lg bg-blue-500 hover:opacity-90 group">
-          <svg class="flex-shrink-0 w-[26px] h-[26px] text-white transition duration-75 group-hover:text-white"
-            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-            viewBox="0 0 24 24">
+        <a href="{% url 'analyse:create' %}" class="flex items-center p-2 rounded-lg
+          {% if view_name == 'analyse:create' %} text-white bg-blue-500 hover:opacity-90
+          {% else %} text-gray-900 hover:bg-gray-100
+          {% endif %} group">
+          <svg class="flex-shrink-0 w-[26px] h-[26px]
+          {% if view_name == 'analyse:create' %} text-white group-hover:text-white 
+          {% else %} text-gray-500 group-hover:text-gray-900 
+          {% endif %} transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd"
               d="M8 7V2.221a2 2 0 0 0-.5.365L3.586 6.5a2 2 0 0 0-.365.5H8Zm2 0V2h7a2 2 0 0 1 2 2v.126a5.087 5.087 0 0 0-4.74 1.368v.001l-6.642 6.642a3 3 0 0 0-.82 1.532l-.74 3.692a3 3 0 0 0 3.53 3.53l3.694-.738a3 3 0 0 0 1.532-.82L19 15.149V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Z"
               clip-rule="evenodd" />
@@ -36,10 +55,15 @@
         </a>
       </li>
       <li>
-        <a href="{% url 'analyse:list' %}"
-          class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-          <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
-            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 22">
+        <a href="{% url 'analyse:list' %}" class="flex items-center p-2 rounded-lg 
+          {% if view_name == 'analyse:list' %} text-white bg-blue-500 hover:opacity-90
+          {% else %} text-gray-900 hover:bg-gray-100
+          {% endif %} group">
+          <svg class="flex-shrink-0 w-6 h-6
+          {% if view_name == 'analyse:list' %} text-white group-hover:text-white 
+          {% else %} text-gray-500 group-hover:text-gray-900 
+          {% endif %} transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+            viewBox="0 0 22 22">
             <path fill-rule="evenodd"
               d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Zm-3 8a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-2-1a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H9Zm2 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-2-1a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H9Z"
               clip-rule="evenodd" />
@@ -48,11 +72,15 @@
         </a>
       </li>
       <li>
-        <a href="{% url 'landing:knowledgebase' %}"
-          class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-          <svg class="flex-shrink-0 w-[26px] h-[26px] text-gray-500 transition duration-75 group-hover:text-gray-900"
-            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-            viewBox="0 0 24 24">
+        <a href="{% url 'landing:knowledgebase' %}" class="flex items-center p-2 rounded-lg
+          {% if view_name == 'landing:knowledgebase' %} text-white bg-blue-500 hover:opacity-90
+          {% else %} text-gray-900 hover:bg-gray-100
+          {% endif %} group">
+          <svg class="flex-shrink-0 w-[26px] h-[26px]
+          {% if view_name == 'landing:knowledgebase' %} text-white group-hover:text-white 
+          {% else %} text-gray-500 group-hover:text-gray-900 
+          {% endif %} transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd"
               d="M6 2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 1 0 0-2h-2v-2h2a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2h-8v16h5v2H7a1 1 0 1 1 0-2h1V2H6Z"
               clip-rule="evenodd" />
@@ -61,7 +89,26 @@
           <span class="flex-1 ms-3 whitespace-nowrap">База знаний</span>
         </a>
       </li>
+      <li>
+        <a href="{% url 'analyse:search' %}" class="flex items-center p-2 rounded-lg
+          {% if view_name == 'analyse:search' %} text-white bg-blue-500 hover:opacity-90
+          {% else %} text-gray-900 hover:bg-gray-100
+          {% endif %} group">
+          <svg class="flex-shrink-0 w-[26px] h-[26px]
+          {% if view_name == 'analyse:search' %} text-white group-hover:text-white 
+          {% else %} text-gray-500 group-hover:text-gray-900 
+          {% endif %} transition duration-75" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" fill="currentColor" viewBox="0 0 24 24">
+
+            <path fill-rule="evenodd"
+              d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Zm2 0V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm.5 5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm0 5c.47 0 .917-.092 1.326-.26l1.967 1.967a1 1 0 0 0 1.414-1.414l-1.817-1.818A3.5 3.5 0 1 0 11.5 17Z"
+              clip-rule="evenodd" />
+          </svg>
+          <span class="flex-1 ms-3 whitespace-nowrap">Поиск по пациентам</span>
+        </a>
+      </li>
     </ul>
+    {% endwith %}
     <div id="dropdown-cta" class="p-4 mt-6 rounded-lg bg-blue-50 " role="alert">
       <div class="flex items-center mb-3">
         <span class="bg-orange-100 text-orange-800 text-sm font-semibold me-2 px-2.5 py-0.5 rounded">Beta</span>
@@ -77,17 +124,17 @@
         </button>
       </div>
       <p class="mb-3 text-sm text-blue-800">
-        Информация на сайте является ознакомительной, не заменяя консультацию врача!<br>На сайте используются
-        <span class="font-semibold">coockie</span> и другие аналогичные технологии.<br><br>Оставаясь на сайте, вы соглашаетесь с
+        Информация на сайте является ознакомительной, не заменяя консультацию врача!<br><br>Оставаясь на сайте, вы
+        соглашаетесь с
         <a href="#" class="text-sm text-blue-800 underline font-semibold hover:text-blue-900">Пользовательским
           соглашением</a>.
       </p>
     </div>
-    <ul class="space-y-2 font-medium absolute bottom-3 px-3 py-4 overflow-y-auto bg-gray-50 w-60">
+    <ul class="space-y-2 font-medium absolute bottom-3 px-3 py-4 overflow-y-auto bg-white w-60">
       {% if user.is_authenticated %}
       <li>
         <div class="flex items-center p-2 text-gray-900 rounded-lg group">
-          <svg class="w-[26px] h-[26px] text-gray-800 dark:text-white" aria-hidden="true"
+          <svg class="w-[26px] h-[26px] text-gray-800" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd"
               d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z"
@@ -118,15 +165,17 @@
         <ul id="dropdown-authentication" class="hidden py-2 space-y-2">
           <li>
             <a href="{% url 'users:logout' %}"
-              class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Выйти</a>
+              class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100">Выйти</a>
           </li>
           <li>
             <a href="{% url 'password_change' %}"
-              class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Изменить пароль</a>
+              class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100">Изменить
+              пароль</a>
           </li>
           <li>
             <a href="{% url 'password_reset' %}"
-              class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Забыли пароль</a>
+              class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100">Забыли
+              пароль</a>
           </li>
         </ul>
       </li>
