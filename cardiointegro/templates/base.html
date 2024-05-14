@@ -20,9 +20,9 @@
     {% tailwind_css %}
 </head>
 
-<body class="font-open-sans">
+<body class="font-open-sans bg-gray-50">
     {% include "includes/sidebar.html" %}
-    <div class="p-6 mt-16 sm:ml-64">
+    <div class="p-6 mt-16 sm:ml-64 rounded-2xl bg-white">
         {% block content %}{% endblock %}
     </div>
 </body>
