@@ -1,0 +1,45 @@
+{% load static %}
+<!-- start products -->
+<div>
+    <p data-aos="fade-right" data-aos-duration="1000"
+        class="text-2xl md:text-3xl lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-salad to-sea font-bold w-fit mb-9">
+        ПРОДУКТЫ</p>
+    <div data-aos="fade-right" data-aos-duration="3500"
+        class="headline mx-auto flex flex-wrap items-center justify-between gap-4 w-full mb-8 p-8 rounded-[32px] backdrop-blur-full shadow-[inset_6.5px_-6.5px_12px_0px_rgba(22,138,173,0.07)] shadow-[inset_-6.5px_6.5px_12px_0px_rgba(118,200,147,0.07),inset_6.5px_-6.5px_12px_0px_rgba(22,138,173,0.07)]">
+        <div class="w-[560px] flex flex-col gap-6">
+            <p class="text-3xl uppercase font-semibold text-salad">WEB-Сервис для анализа ЭКГ</p>
+            <p class="text-gray-50">Персонализированная диагностика сердечно-сосудистых заболеваний, расчёт
+                функциональных
+                параметров,
+                формирование интерактивных графиков ЭКГ и заключения</p>
+            <a href="/analyse/create/"
+                class="flex items-center gap-2 rounded-lg border border-gray-50 px-4 py-2 transition duration-300 ease-in-out hover:scale-110 w-48">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M22.724 9.52545L21.6763 8.47661C21.4547 8.25611 21.3333 7.96211 21.3333 7.65061V6.16661C21.3333 4.23695 19.763 2.66661 17.8333 2.66661H16.3493C16.0425 2.66661 15.7415 2.54178 15.5245 2.32478L14.4757 1.27595C13.1107 -0.0890527 10.8917 -0.0890527 9.52666 1.27595L8.47549 2.32478C8.25849 2.54178 7.95749 2.66661 7.65066 2.66661H6.16666C4.23699 2.66661 2.66666 4.23695 2.66666 6.16661V7.65061C2.66666 7.96211 2.54532 8.25611 2.32482 8.47661L1.27599 9.52428C0.614488 10.1858 0.250488 11.0654 0.250488 11.9999C0.250488 12.9344 0.615655 13.8141 1.27599 14.4744L2.32366 15.5233C2.54532 15.7438 2.66666 16.0378 2.66666 16.3493V17.8333C2.66666 19.7629 4.23699 21.3333 6.16666 21.3333H7.65066C7.95749 21.3333 8.25849 21.4581 8.47549 21.6751L9.52432 22.7251C10.2068 23.4064 11.1028 23.7471 11.9988 23.7471C12.8948 23.7471 13.7908 23.4064 14.4733 22.7239L15.5222 21.6751C15.7415 21.4581 16.0425 21.3333 16.3493 21.3333H17.8333C19.763 21.3333 21.3333 19.7629 21.3333 17.8333V16.3493C21.3333 16.0378 21.4547 15.7438 21.6763 15.5233L22.724 14.4756C23.3843 13.8141 23.7495 12.9356 23.7495 11.9999C23.7495 11.0643 23.3855 10.1858 22.724 9.52545ZM17.3142 10.6373L10.3142 15.3039C10.117 15.4358 9.89066 15.4999 9.66666 15.4999C9.36566 15.4999 9.06699 15.3833 8.84182 15.1581L6.50849 12.8248C6.05232 12.3686 6.05232 11.6313 6.50849 11.1751C6.96466 10.7189 7.70199 10.7189 8.15816 11.1751L9.81482 12.8318L16.0192 8.69595C16.557 8.33778 17.2803 8.48245 17.6373 9.01911C17.9955 9.55578 17.8508 10.2803 17.3142 10.6373Z"
+                        fill="white" />
+                </svg>
+                <span class="text-lg font-medium text-gray-50">Попробовать!</span>
+            </a>
+        </div>
+        <div>
+            <img src="{% static 'video/ecg.gif' %}" alt="ecg gif" class="hidden lg:block h-64">
+        </div>
+    </div>
+    <div data-aos="fade-left" data-aos-duration="400"
+        class="mx-auto flex flex-wrap items-center justify-between gap-4 w-full mb-8 p-8 rounded-[32px] backdrop-blur-full shadow-[inset_6.5px_-6.5px_12px_0px_rgba(22,138,173,0.07)] shadow-[inset_-6.5px_6.5px_12px_0px_rgba(118,200,147,0.07),inset_6.5px_-6.5px_12px_0px_rgba(22,138,173,0.07)]">
+        <div class="w-[560px] flex flex-col gap-6">
+            <p class="text-3xl uppercase font-semibold text-salad">ПОРТАТИВНЫЙ КАРДИОМОНИТОР</p>
+            <p class="text-gray-50">Персонализированная диагностика сердечно-сосудистых заболеваний, расчёт
+                функциональных параметров, формирование интерактивных графиков ЭКГ и заключения</p>
+            <a href="#"
+                class="flex items-center gap-2 rounded-lg border border-gray-50 px-4 py-2 w-48 pointer-events-none">
+                <span class="text-lg font-medium text-gray-50 mx-auto">В разработке</span>
+            </a>
+        </div>
+        <div>
+            <img src="{% static 'video/cardiomonitor.gif' %}" alt="cardiomonitor" class="hidden lg:block h-64">
+        </div>
+    </div>
+</div>
+<!-- end products -->

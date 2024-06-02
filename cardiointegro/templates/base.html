@@ -14,7 +14,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <title>
+    <link rel="stylesheet" href="{% static 'css/style_analyse.css' %}">
+        <title>
         {% block title %}{% endblock %} - CardioIntegro
     </title>
     {% tailwind_css %}
@@ -24,9 +25,11 @@
     {% include "includes/sidebar.html" %}
     <div class="p-6 mt-16 sm:ml-64 rounded-2xl bg-white">
         {% block content %}{% endblock %}
+
     </div>
+    {% include 'includes/politic_modal.html' %}
 </body>
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 </html>

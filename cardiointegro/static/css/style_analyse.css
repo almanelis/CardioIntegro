@@ -1,0 +1,27 @@
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-track {
+    background: white;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: rgba(63, 131, 248, 0.7); /* цвет ползунка с прозрачностью */
+    border-radius: 4px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(63, 131, 248, 0.5); /* измененный цвет ползунка при наведении */
+}
