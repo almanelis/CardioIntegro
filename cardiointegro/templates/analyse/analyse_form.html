@@ -18,12 +18,10 @@
   <div class="font-semibold">
     {{ form|crispy }}
   </div>
-  
   <input type="submit" value="Отправить" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
     class="mx-auto bg-blue-500 text-white text-lg rounded-lg px-8 py-1.5 hover:opacity-60">
 </form>
 </div>
-
   <div id="popup-modal" tabindex="-1" class="hidden backdrop-blur-xl overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-white rounded-lg shadow">
