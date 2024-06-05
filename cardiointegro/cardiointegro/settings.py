@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Стилизация админ зоны
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -101,14 +103,29 @@ NPM_BIN_PATH = which("npm")
 
 WSGI_APPLICATION = 'cardiointegro.wsgi.application'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'cardiointegro@yandex.ru'
+EMAIL_HOST_PASSWORD = 'snedffjgwmjotfuh'
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cidb',
+        'USER': 'postgres',
+        'PASSWORD': 'peach',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -117,10 +134,6 @@ AUTH_USER_MODEL = 'users.CIUser'
 LOGIN_REDIRECT_URL = 'analyse:list'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'login'
-# Бэкенд filebased.EmailBackend:
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-# Директория, в которую будут сохраняться файлы писем:
-EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -140,6 +153,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Конфигурация админ зоны
+JAZZMIN_SETTINGS = {
+    'site_title': 'CardioIntegro',
+    "site_brand": "CardioIntegro"
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -147,7 +166,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'Ru-rus'
 LANGUAGE_CODE = 'Ru-rus'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 

@@ -24,5 +24,9 @@ class ECGAnalyse(models.Model):
     def get_absolute_url(self):
         return reverse('main:detail', kwargs={'pk': self.pk})
 
+    class Meta:
+        verbose_name = 'Анализы'
+        verbose_name_plural = 'ЭКГ Анализы'
+
     def __str__(self):
-        return self.title
+        return f'Пациент: {self.title} | Врач: {self.doctor}'

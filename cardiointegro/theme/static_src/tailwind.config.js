@@ -22,11 +22,22 @@ module.exports = {
         './node_modules/flowbite/**/*.js',
     ],
     theme: {
+        colors: {
+            salad: '#99D98C',
+            sea: '#34A0A4',
+            deepsea: '#0B1725',
+        },
         extend: {
             fontFamily: {
                 'open-sans': ['Open Sans', 'sans-serif']
             },
         },
+        backdropBlur: {
+            full: '100px',
+          },
+        // boxShadow: {
+        //     'sea': '6.5px -6.5px 12px 0px rgba(12, 138, 173, 0.7v)',
+        //   }
     },
     plugins: [
         /**

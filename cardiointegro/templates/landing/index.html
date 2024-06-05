@@ -1,0 +1,80 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    CardioIntegro ❤️
+  </title>
+
+  <link rel="icon" href="/static/img/heart.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  {% tailwind_css %}
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style_landing.css' %}">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+</head>
+
+<body class="font-open-sans" style="background-image: url({% static 'img/background.png' %});">
+  <section class="bg-center bg-no-repeat bg-blend-multiply">
+    {% include 'landing/includes/header.html' %}
+    <!-- start main -->
+    <main>
+      <div class="mx-auto w-full max-w-screen-xl lg:my-24 flex flex-col gap-4 sm:gap-16">
+        {% include 'landing/includes/main_section.html' %}
+        {% include 'landing/includes/description.html' %}
+        {% include 'landing/includes/products.html' %}
+        {% include 'landing/includes/feedback_form.html' %}
+
+        {% include 'landing/includes/politic_modal.html' %}
+      </div>
+      {% include 'landing/includes/footer.html' %}
+    </main>
+    <!-- end main -->
+  </section>
+  <!-- удалить в проде reloader -->
+  <script src="/static/django-browser-reload/reload-listener.js"
+    data-worker-script-path="/static/django-browser-reload/reload-worker.js" data-events-path="/__reload__/events/"
+    defer>
+    </script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+<script>
+  AOS.init();
+</script>
+<script>
+  $(document).ready(function() {
+    $("#feedback").submit(function (event) {
+      event.preventDefault(); // Предотвращаем стандартную отправку формы
+
+      var formData = $(this).serialize(); // Собираем данные формы
+
+      $.ajax({
+        type: "POST",
+        url: "{% url 'landing:main_page' %}", // Замените на URL вашего обработчика формы
+        data: formData,
+        success: function (response) {
+          if (response.success) {
+            $("#form-message").html('<p class="text-salad">' + response.message + '</p>');
+            $("#feedback")[0].reset(); // Очищаем поля формы после успешной отправки
+          } else {
+            $("#form-message").html('<p class="text-red-600">' + response.message + '</p>');
+          }
+        },
+        error: function () {
+          $("#form-message").html('<p class="error">Вы должны согласиться с политикой конфиденциальности</p>');
+        }
+      });
+    });
+  });
+</script>
+</html>

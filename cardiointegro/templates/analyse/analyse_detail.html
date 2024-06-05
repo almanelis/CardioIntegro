@@ -3,9 +3,9 @@
 {% block title %}Отчёт по анализу - {{ object.title }}{% endblock title %}
 
 {% block content %}
-детали по отчёту
+Детали по отчёту
 <div>
-    {{ object.title }}{{ object.id }}{{ object.created_at }}
+    {{ object.title }} id:{{ object.id }} Создано: {{ object.created_at }}
 </div>
 <img src="{{ object.plot1.url }}" alt="">
 <img src="{{ object.plot2.url }}" alt="">

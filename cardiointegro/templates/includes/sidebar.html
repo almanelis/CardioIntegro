@@ -1,6 +1,6 @@
 {% load static %}
 
-<nav class="fixed top-0 z-50 w-full border-b border-gray-200 bg-white">
+<nav class="fixed top-0 z-50 w-full bg-gray-50">
   <div class="px-3 py-3 lg:px-5 lg:pl-3">
     <div class="flex flex-wrap items-center justify-between">
       <div class="flex items-center justify-start rtl:justify-end gap-1.5">
@@ -15,7 +15,7 @@
             </path>
           </svg>
         </button>
-        <a href="{% url 'landing:main_page' %}" class="flex items-center">
+        <a href="{% url 'landing:main_page' %}" class="flex items-center mx-10 sm:mx-auto">
           <img src="{% static 'img/heart.ico' %}" alt="logo">
           <p class="text-3xl font-medium"><span class="text-red-600">Cardio</span><span
               class="text-gray-900">Integro</span></p>
@@ -29,9 +29,9 @@
 </nav>
 
 <aside id="logo-sidebar"
-  class="fixed top-0 left-0 z-40 w-64 bg-white h-screen pt-20 transition-transform -translate-x-full border-r border-gray-200 sm:translate-x-0 "
+  class="fixed top-0 left-0 z-40 w-64 bg-gray-50 h-screen pt-20 transition-transform -translate-x-full sm:translate-x-0 "
   aria-label="Sidebar">
-  <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
+  <div class="h-full px-3 pb-4 overflow-y-auto bg-gray-50">
     {% with request.resolver_match.view_name as view_name %}
     <ul class="space-y-2 font-medium mt-6 sm:mt-0">
       <li>
@@ -126,11 +126,10 @@
       <p class="mb-3 text-sm text-blue-800">
         Информация на сайте является ознакомительной, не заменяя консультацию врача!<br><br>Оставаясь на сайте, вы
         соглашаетесь с
-        <a href="#" class="text-sm text-blue-800 underline font-semibold hover:text-blue-900">Пользовательским
-          соглашением</a>.
+        <button data-modal-target="politic" data-modal-toggle="politic" class="text-sm text-blue-800 underline font-semibold hover:text-blue-900 text-start">Политикой конфиденциальности</button>
       </p>
     </div>
-    <ul class="space-y-2 font-medium absolute bottom-3 px-3 py-4 overflow-y-auto bg-white w-60">
+    <ul class="space-y-2 font-medium absolute bottom-3 px-3 py-4 overflow-y-auto bg-gray-50 w-60">
       {% if user.is_authenticated %}
       <li>
         <div class="flex items-center p-2 text-gray-900 rounded-lg group">
