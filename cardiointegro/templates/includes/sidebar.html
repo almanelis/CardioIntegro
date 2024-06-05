@@ -1,4 +1,5 @@
 {% load static %}
+
 <nav class="fixed top-0 z-50 w-full bg-gray-50">
   <div class="px-3 py-3 lg:px-5 lg:pl-3">
     <div class="flex flex-wrap items-center justify-between">
@@ -14,7 +15,7 @@
             </path>
           </svg>
         </button>
-        <a href="{% url 'landing:main_page' %}" class="flex items-center">
+        <a href="{% url 'landing:main_page' %}" class="flex items-center mx-10 sm:mx-auto">
           <img src="{% static 'img/heart.ico' %}" alt="logo">
           <p class="text-3xl font-medium"><span class="text-red-600">Cardio</span><span
               class="text-gray-900">Integro</span></p>
