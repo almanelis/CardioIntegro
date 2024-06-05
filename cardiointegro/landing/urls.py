@@ -8,4 +8,5 @@ urlpatterns = [
     path('', views.feedback_view, name='main_page'),
     path('knowledgebase/', views.TutorialTemplateView.as_view(),
          name='knowledgebase'),
+    path('frontend/', views.FrontendTemplateView.as_view()),
 ]
