@@ -20,7 +20,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/style_landing.css' %}">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body class="font-open-sans" style="background-image: url({% static 'img/background.png' %});">
@@ -32,8 +32,9 @@
         {% include 'landing/includes/main_section.html' %}
         {% include 'landing/includes/description.html' %}
         {% include 'landing/includes/products.html' %}
-        {% include 'landing/includes/feedback_form.html' %}
+        {% include 'landing/includes/feature.html' %}
 
+        {% include 'landing/includes/feedback_form.html' %}
         {% include 'landing/includes/politic_modal.html' %}
       </div>
       {% include 'landing/includes/footer.html' %}
@@ -52,7 +53,7 @@
   AOS.init();
 </script>
 <script>
-  $(document).ready(function() {
+  $(document).ready(function () {
     $("#feedback").submit(function (event) {
       event.preventDefault(); // Предотвращаем стандартную отправку формы
 
@@ -77,4 +78,5 @@
     });
   });
 </script>
+
 </html>

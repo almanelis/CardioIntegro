@@ -9,7 +9,7 @@ class FeedbackForm(forms.ModelForm):
     name = forms.CharField(label='',
                            widget=forms.TextInput(
                                attrs={'placeholder': 'Фамилия и имя',
-                                      'class': 'block w-full placeholder:text-gray-400 text-gray-50 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-salad peer'}))
+                                      'class': 'block w-full placeholder:text-gray-400 text-gray-50 bg-transparent border-b-2 border-0 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-salad peer'}))
     company = forms.CharField(label='',
                               widget=forms.TextInput(
                                attrs={'placeholder': 'Компания',
