@@ -14,7 +14,7 @@
   class="text-lg sm:text-xl text-white bg-blue-500 px-6 py-2 rounded-lg hover:opacity-80">Проанализировать ЭКГ</a>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-6">
     <table class="w-full text-left rtl:text-right text-gray-500">
-      <thead class="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700">
+      <thead class="text-gray-700 uppercase bg-gray-50">
         <tr>
           <th scope="col" class="px-6 py-3">
             ФИО пациента
@@ -50,11 +50,11 @@
       {% for i in page_obj.paginator.page_range %}
         {% if page_obj.number == i %}
       <li>
-        <span class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-blue-200 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800">{{ i }}</span>
+        <span class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-blue-200 border border-gray-300 hover:bg-gray-100 hover:text-gray-700">{{ i }}</span>
       </li>
       {% else %}
       <li>
-        <a href="?page={{ i }}" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800">{{ i }}</a>
+        <a href="?page={{ i }}" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">{{ i }}</a>
       </li>
       {% endif %}
       {% endfor %}
