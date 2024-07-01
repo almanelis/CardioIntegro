@@ -24,9 +24,5 @@ def feedback_view(request):
     return render(request, 'landing/index.html', context)
 
 
-class TutorialTemplateView(TemplateView):
-    template_name = 'landing/knowledgebase.html'
-
-
-class FrontendTemplateView(TemplateView):
-    template_name = 'landing/frontend.html'
+class KnowledgebaseTemplateView(TemplateView):
+    template_name = 'includes/knowledgebase.html'
